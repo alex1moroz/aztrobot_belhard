@@ -45,5 +45,3 @@ def main():
             day = call_data[1]
             resp = api.aztro(sign, day)
             bot.send_message(user_id, resp)
-
-bot.polling(non_stop=True)

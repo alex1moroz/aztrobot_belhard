@@ -1,24 +1,17 @@
 import psycopg2
-import creds
+from decouple import config
 
-conn = psycopg2.connect(host=creds.host, dbname=creds.database,
-                        user=creds.user, password=creds.password)
+host = config('HOST',default='')
+database = config('DATABASE',default='')
+user = config('USER',default='')
+password = config('PASSWORD',default='')
+
+
+conn = psycopg2.connect(host=host, dbname=database,
+                        user=user, password=password)
 
 cur = conn.cursor()
 
-
-# cur.execute(f"CREATE TABLE users (id SERIAL PRIMARY KEY, user_id text, username text, "
-#             f"first_name text, last_name text, sign text, day text);")
-# conn.commit()
-
-
-# id
-# user_id
-# username
-# first_name
-# last_name
-# sign
-# day
 
 def set_user(user_id, username, first_name, last_name):
     cur.execute(f"SELECT user_id FROM users WHERE user_id = '{user_id}'")

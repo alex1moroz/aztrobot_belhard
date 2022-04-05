@@ -2,9 +2,9 @@ import telebot
 from telebot import types
 import api
 import database
+from decouple import config
 
-
-token = '5148491223:AAHgZdUyyQMpRTa7tRFauyzqX41PqtG2Tgc'
+token = config('TOKEN',default='')
 bot = telebot.TeleBot(token)
 
 
